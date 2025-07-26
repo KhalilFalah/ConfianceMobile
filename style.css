@@ -1,0 +1,250 @@
+/* style.css */
+
+/* Fond sombre global et textes clairs */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+}
+
+/* Classe pour masquer les éléments */
+.hidden {
+    display: none;
+}
+
+/* ---------- Styles pour la page de connexion ---------- */
+#login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #222;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#login-page p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#password-input {
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 300px;
+}
+
+#enter-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 4px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+}
+
+.error {
+    color: #f88;
+    margin-top: 10px;
+}
+
+/* Style du message de confirmation */
+#confirmation-message {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #0f0;
+}
+
+/* ---------- Styles pour la page du jeu ---------- */
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #222;
+}
+
+/* Cercle du jeu */
+#circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: red;
+    cursor: pointer;
+}
+
+/* Message affiché lors du jeu (intermédiaire ou final) */
+#message {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: clamp(2em, 8vw, 4em); /* Taille de police responsive */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Animation pour faire disparaître le message progressivement */
+.fade-out {
+    animation: fadeOutAnimation 3s forwards;
+}
+
+@keyframes fadeOutAnimation {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* ---------- Styles pour la page Avarice ---------- */
+#avarice-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #222;
+    overflow: hidden;
+}
+
+/* Affichage du record et du score (coin display) en haut à droite */
+#record-display {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: right;
+    font-size: clamp(1em, 2.5vw, 1.2em); /* Taille de police responsive */
+    line-height: 1.4em;
+    padding: 5px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 5px;
+}
+
+/* Style du bouton Quitter */
+#quit-button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Sac que l'utilisateur contrôle */
+#bag {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    background: brown;
+    border-radius: 10px;
+}
+
+/* Style des pièces tombantes */
+.coin {
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(255,215,0,0.8);
+}
+
+/* Messages d'échec et de réussite */
+.failure-message, .success-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.5em, 5vw, 2em); /* Taille de police responsive */
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    border: 2px solid red;
+    color: #fff;
+    width: 90%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Zone pour les messages motivants */
+#motivation-message {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(1.2em, 4vw, 1.5em); /* Taille de police responsive */
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#final-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 3s;
+    text-align: center;
+    font-size: clamp(2em, 8vw, 4em);
+}
+
+/* Media Queries pour la responsivité */
+@media (max-width: 768px) {
+    #bag {
+        width: 80px;
+        height: 40px;
+    }
+
+    #doors {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    #bag {
+        width: 60px;
+        height: 30px;
+    }
+
+    #password-input {
+        width: 90%;
+    }
+
+    #towers {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        bottom: auto;
+        top: 15%;
+    }
+
+    .tower {
+        margin-bottom: 20px;
+    }
+
+    #buttons {
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .build-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #intro {
+        font-size: 20px;
+    }
+}

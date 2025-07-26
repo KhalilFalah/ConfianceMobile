@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confiance</title>
+  <style>
+    /* Style global similaire aux autres étapes du projet */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #222, #333);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+    /* Conteneur central */
+    #intro {
+      text-align: center;
+      padding: 20px;
+    }
+    #intro h1 {
+      font-size: clamp(1.5em, 6vw, 2em);
+      margin-bottom: 20px;
+    }
+    #intro p {
+      font-size: clamp(1em, 4vw, 1.2em);
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Bouton pour jouer */
+    #playButton {
+      background-color: #e74c3c; /* rouge */
+      color: #fff;
+    }
+    /* Bouton pour passer */
+    #skipButton {
+      background-color: #3498db; /* bleu */
+      color: #fff;
+    }
+    /* Zone pour le message final centré */
+    #finalMessage {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(1.2em, 5vw, 1.5em);
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s;
+      width: 90%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div id="intro">
+    <h1></h1>
+    <p>Veux-tu jouer à ce jeu ou passer directement à la fin par manque de temps&nbsp;?</p>
+    <button id="playButton">Jouer au jeu</button>
+    <button id="skipButton">Passer à la fin</button>
+  </div>
+  <!-- Zone pour le message final qui s'affiche en cas de choix "passer à la fin" -->
+  <div id="finalMessage"></div>
+  
+  <!-- Script pour empêcher le retour arrière -->
+  <script>
+    (function(window, location) {
+      history.pushState(null, null, location.href);
+      window.addEventListener('popstate', function() {
+        alert("Paresse n'est pas une option. Remets-toi en question.");
+        history.pushState(null, null, location.href);
+      });
+    })(window, location);
+  </script>
+  
+  <script src="paresse.js"></script>
+</body>
+</html>

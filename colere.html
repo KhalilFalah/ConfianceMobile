@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colère - Confiance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="circle"></div>
+    <div id="message" class="hidden"></div>
+  </div>
+  <script src="colere.js"></script>
+  <script>
+    (function(window, location) {
+      // Pousse immédiatement un état dans l'historique
+      history.pushState(null, null, location.href);
+      
+      window.addEventListener('popstate', function(event) {
+        // Chaque fois que l'utilisateur tente de revenir (popstate),
+        // on repousse un état et on affiche une alerte.
+        history.pushState(null, null, location.href);
+        alert("Avare et Tricheur, remet toi en question");
+      });
+    })(window, location);
+  </script>
+  
+</body>
+</html>

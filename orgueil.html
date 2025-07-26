@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confiance</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #2c3e50, #34495e);
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #game {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        #intro {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1.2em, 5vw, 1.5em);
+            text-align: center;
+            width: 90%;
+        }
+        #towers {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 600px;
+        }
+        .tower {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            width: 30%;
+        }
+        .floor {
+            width: 100%;
+            max-width: 150px;
+            height: 40px;
+            margin-bottom: 2px;
+            transition: transform 0.1s;
+        }
+        #left-tower .floor {
+            background: #555;
+        }
+        #right-tower .floor {
+            background: #777;
+        }
+        #player-tower .floor.modeste {
+            background: gray;
+        }
+        #player-tower .floor.imposant {
+            background: silver;
+        }
+        #player-tower .floor.majestueux {
+            background: gold;
+        }
+        #buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            width: 90%;
+            max-width: 400px;
+            justify-content: center;
+        }
+        .build-button {
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: clamp(0.8em, 3vw, 1em);
+            flex-grow: 1;
+        }
+        #message {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: clamp(1em, 4vw, 1.2em);
+            opacity: 0;
+            transition: opacity 1s;
+            text-align: center;
+            width: 90%;
+        }
+        #final-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(1.5em, 6vw, 2em);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s;
+            width: 90%;
+        }
+        #stop {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: clamp(0.9em, 3vw, 1em);
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div id="intro">Construis ta tour.<br>Montre au monde que tu es le meilleur.</div>
+        <div id="towers">
+            <div id="left-tower" class="tower"></div>
+            <div id="player-tower" class="tower"></div>
+            <div id="right-tower" class="tower"></div>
+        </div>
+        <div id="buttons">
+            <button class="build-button" style="background: gray;" onclick="addFloor('modeste')">Modeste</button>
+            <button class="build-button" style="background: silver;" onclick="addFloor('imposant')">Imposant</button>
+            <button class="build-button" style="background: gold;" onclick="addFloor('majestueux')">Majestueux</button>
+        </div>
+        <div id="message"></div>
+        <div id="final-message"></div>
+        <button id="stop">Je m’arrête là</button>
+    </div>
+    <script src="orgueil.js"></script>
+</body>
+</html>

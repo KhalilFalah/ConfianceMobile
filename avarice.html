@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confiance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="avarice-container">
+    <!-- Zone d'affichage du record et du score -->
+    <div id="record-display">
+      Record : 1600 points<br>
+      Score : <span id="score">0</span> points
+      <button id="quit-button" class="hidden">Quitter</button>
+    </div>
+    <!-- Zone pour les messages motivants (affichés pendant 1 seconde) -->
+    <div id="motivation-message" class="hidden"></div>
+    <!-- Le sac contrôlé par l'utilisateur -->
+    <div id="bag"></div>
+  </div>
+  <script src="avarice.js"></script>
+  <!-- Script pour empêcher le retour arrière -->
+  <script>
+    (function(window, location) {
+      // Pousse immédiatement un état dans l'historique
+      history.pushState(null, null, location.href);
+      
+      window.addEventListener('popstate', function(event) {
+        // Chaque fois que l'utilisateur tente de revenir (popstate),
+        // on repousse un état et on affiche une alerte.
+        history.pushState(null, null, location.href);
+        alert("Avare et Tricheur, remet toi en question");
+      });
+    })(window, location);
+  </script>
+  
+</body>
+</html>

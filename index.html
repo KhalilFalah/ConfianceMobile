@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confiance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-page">
+    <p>Entrez le mot de passe pour jouer</p>
+    <input type="password" id="password-input" placeholder="Mot de passe">
+    <br>
+    <button id="enter-button">en moi</button>
+    <div id="confirmation-message" class="hidden">
+      Tu es sûr ?
+    </div>
+    <div id="login-error" class="error hidden">
+      Mot de passe incorrect, réessaie.
+    </div>
+  </div>
+  <script src="login.js"></script>
+
+  <script>
+    (function(window, location) {
+      // Pousse immédiatement un état dans l'historique
+      history.pushState(null, null, location.href);
+      
+      window.addEventListener('popstate', function(event) {
+        // Chaque fois que l'utilisateur tente de revenir (popstate),
+        // on repousse un état et on affiche une alerte.
+        history.pushState(null, null, location.href);
+        alert("Avare et Tricheur, remet toi en question");
+      });
+    })(window, location);
+  </script>
+  
+</body>
+</html>
