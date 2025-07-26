@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confiance</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px; /* Ajoute de l'espace sur les bords */
+            background: linear-gradient(to bottom, #222, #333);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Utiliser min-height pour la compatibilité mobile */
+            overflow-y: auto; /* Permet de faire défiler si le contenu est trop grand */
+            text-align: center;
+            box-sizing: border-box; /* Assure que le padding est inclus dans la taille totale */
+        }
+        #finalMessage {
+            /* Utilisation de clamp() pour une taille de police fluide et responsive */
+            font-size: clamp(1.1em, 4vw, 1.5em); 
+            line-height: 1.6; /* Améliore la lisibilité */
+            max-width: 800px;
+        }
+        /* Les mots importants seront mis en gras et en noir */
+        strong {
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="finalMessage">
+        Félicitations, tu es arrivé jusqu'ici. Mon idée était de te faire passer par certaines expériences liées aux péchés capitaux, pour que tu comprennes qu'il est inutile d'envier les autres, de s'énerver, de procrastiner ou de vouloir tout garder pour soi. Aie <strong>confiance</strong> en toi, c'est ainsi que tu réussiras tout ce que tu entreprendras.<br><br>
+        Si je te disais que, pendant que tu jouais, le site enregistrait toutes tes données depuis le début... Comment te sentirais-tu ? <strong>Trahi</strong>, n'est-ce pas ? Ne t'en fais pas, c'est totalement faux : je n'enregistre aucune donnée.<br><br>
+        Ce qu'il faut comprendre, c'est que tu dois avoir <strong>confiance</strong> en toi et uniquement en toi. Ne fais confiance à personne, sinon tu finiras déçu. Si même Mufasa s'est fait <strong>trahir</strong> par son propre frère, qui es-tu pour y échapper ?
+    </div>
+    <script>
+        // La page reste affichée 40 secondes avant de fermer ou de rediriger
+        setTimeout(function() {
+            window.close();
+            // Fallback pour les navigateurs qui ne supportent pas window.close()
+            window.location.href = "index.html"; 
+        }, 40000);
+    </script>
+</body>
+</html>
