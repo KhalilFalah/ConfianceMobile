@@ -19,6 +19,10 @@
       overflow: hidden;
       position: relative;
     }
+    /* Classe pour masquer les éléments */
+    .hidden {
+        display: none;
+    }
     /* Bouton central à cliquer */
     #clickButton {
       position: absolute;
@@ -35,6 +39,7 @@
       font-size: 18px;
       cursor: pointer;
       transition: width 0.2s, height 0.2s;
+      z-index: 10; /* S'assurer que le bouton est au premier plan */
     }
     /* Message de progression (affiché au centre) */
     #progressMessage {
@@ -45,7 +50,7 @@
       font-size: clamp(1.2em, 5vw, 1.5em);
       opacity: 0;
       transition: opacity 0.5s;
-      pointer-events: none;
+      pointer-events: none; /* Ne bloque pas les clics */
     }
     /* Bouton "Abandonner" en bas à droite */
     #abandonButton {
@@ -60,6 +65,7 @@
       font-size: 16px;
       display: none;
       cursor: pointer;
+      z-index: 20;
     }
     /* Message final centré */
     #finalMessage {
@@ -69,8 +75,6 @@
       transform: translate(-50%, -50%);
       font-size: clamp(1.5em, 6vw, 2.2em);
       text-align: center;
-      opacity: 0;
-      transition: opacity 1s;
       width: 90%;
       max-width: 600px;
     }
@@ -78,9 +82,10 @@
 </head>
 <body>
   <button id="clickButton">Clique moi</button>
-  <div id="progressMessage" class="hidden"></div>
+  <div id="progressMessage"></div>
   <button id="abandonButton">Abandonner</button>
-  <div id="finalMessage"></div>
+  <!-- L'élément final message est maintenant caché correctement au départ -->
+  <div id="finalMessage" class="hidden"></div>
   
   <!-- Script pour empêcher le retour arrière -->
   <script>
@@ -94,58 +99,5 @@
   </script>
   
   <script src="paresse_2.js"></script>
-</body>
-</html>```
-
-### final.html
-
-```html
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confiance</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(to bottom, #222, #333);
-            color: #fff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow-y: auto;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        #finalMessage {
-            font-size: clamp(1em, 4vw, 1.5em); /* Taille de police responsive */
-            line-height: 1.6;
-            max-width: 800px;
-            padding: 20px;
-        }
-        /* Les mots importants seront mis en gras et en noir */
-        strong {
-            font-weight: bold;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <div id="finalMessage">
-        Félicitations, tu es arrivé jusqu'ici. Mon idée était de te faire passer par certaines expériences liées aux péchés capitaux, pour que tu comprennes qu'il est inutile d'envier les autres, de s'énerver, de procrastiner ou de vouloir tout garder pour soi. Aie <strong>confiance</strong> en toi, c'est ainsi que tu réussiras tout ce que tu entreprendras.<br><br>
-        Si je te disais que, pendant que tu jouais, le site enregistrait toutes tes données depuis le début... Comment te sentirais-tu ? <strong>Trahi</strong>, n'est-ce pas ? Ne t'en fais pas, c'est totalement faux : je n'enregistre aucune donnée.<br><br>
-        Ce qu'il faut comprendre, c'est que tu dois avoir <strong>confiance</strong> en toi et uniquement en toi. Ne fais confiance à personne, sinon tu finiras déçu. Si même Mufasa s'est fait <strong>trahir</strong> par son propre frère, qui es-tu pour y échapper ?
-    </div>
-    <script>
-        // La page reste affichée 40 secondes avant de fermer ou de rediriger
-        setTimeout(function() {
-            window.close();
-            window.location.href = "index.html";
-        }, 40000);
-    </script>
 </body>
 </html>
